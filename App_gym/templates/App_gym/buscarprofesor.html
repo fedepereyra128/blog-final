@@ -1,0 +1,31 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Profesores</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+<form action="{% url "buscar1" %}" method="GET">
+
+    <input type="text" name="area" id="area">
+
+    <input type="submit" value="buscar Profesor">
+
+
+</form>
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}

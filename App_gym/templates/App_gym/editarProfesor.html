@@ -1,0 +1,45 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Editar Profesores {{ profesor }}</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+
+<form action="{% url "editarProfesor" profesor.id %}" method="POST"> {% csrf_token %}
+
+    {{ form.as_table }}
+    
+    <input type="submit" value="editar Profesor">
+
+
+{% endblock %}
+
+
+{% block cambia %} 
+
+
+
+Conoce nuestros Profesores 
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+
+
+

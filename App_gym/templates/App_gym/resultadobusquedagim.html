@@ -1,0 +1,36 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Gimnasios</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+<ul>
+    {% for gimnasio in gimnasio %}
+    
+ 
+        <li>{{gimnasio.nombre}} {{gimnasio.direccion}} {{gimnasio.email}}</li>
+      
+       
+
+
+
+    {% endfor %}
+    
+</ul>
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}

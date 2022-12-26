@@ -1,0 +1,31 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Gimnasios</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+<form action="{% url "buscar" %}" method="GET">
+
+    <input type="text" name="nombre" id="nombre">
+
+    <input type="submit" value="buscar gimnasio">
+
+
+</form>
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}

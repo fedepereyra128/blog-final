@@ -1,0 +1,40 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Profesores</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+<h2> Listado de Porfesores</h2>
+<ul>
+    {% for profe in profe %}
+
+    <li> {{ profe.nombre }}  {{ profe.area }} {{ profe.email }} </li>
+
+    <a class="btn btn-danger" href="{% url 'eliminarProfesor' profe.id %}" >borrar</a>
+
+    <a class="btn btn-success" href="{% url 'editarProfesor' profe.id %}" >editar</a>
+
+        
+
+    {% endfor %}
+
+
+
+</ul>
+
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}

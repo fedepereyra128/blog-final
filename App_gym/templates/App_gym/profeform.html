@@ -1,0 +1,29 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5">Profesores</h1>
+
+
+{% endblock %}
+
+{% block cambia %} Conoce nuestros Profesores {% endblock %}
+
+{% block contenido_cambia %}
+
+<form action="{% url "profeform" %}" method="POST"> {% csrf_token %}
+
+    {{ form.as_table }}
+    
+    <input type="submit" value="Añadir Profesor">
+    
+    
+    {% endblock %}
+
+
+
+
+
+
+

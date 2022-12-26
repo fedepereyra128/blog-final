@@ -1,0 +1,38 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Lista de Profesores</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+<ul>
+    {% for profesor in profesor %}
+    
+ 
+        <li>{{profesor.nombre}} {{profesor.area}} {{profesor.email}}</li>
+
+        
+      
+
+
+
+
+    {% endfor %}
+    
+</ul>
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}

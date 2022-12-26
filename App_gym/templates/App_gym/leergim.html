@@ -1,0 +1,37 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Gimnasios</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+<h2> Listado de Gimnasios</h2>
+<ul>
+    {% for gimnasio in gimnasio %}
+
+    <li> {{ gimnasio.nombre }} {{ gimnasio.direccion }} {{ gimnasio.email }} </li>
+
+    <a class="btn btn-danger" href="{% url 'eliminarGim' gimnasio.id %}" >borrar</a>
+   
+
+    {% endfor %}
+
+
+
+</ul>
+
+
+    
+
+
+
+
+
+
+
+
+{% endblock %}
