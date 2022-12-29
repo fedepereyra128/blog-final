@@ -25,18 +25,28 @@
                     <div class="col-md-2">
                         <div class="logo">
                             <h2><a href="{% url "inicio" %}">Menu </a></h2>
-
+                            
                             {% block titulo %}  
 
                             {% endblock %}
                         </div>
                     </div>
                     <div class="col-md-10">
+                    
                         <div class="menu">
                             <ul>
                                 <li class="active"><a href="{% url "gimnasio" %}">Gimnasio</a></li>
                                 <li><a href="{% url "profesores" %}">profesores</a></li>
                                 <li><a href="#">Acerca de mi</a></li>
+                                <li><a href="{% url "register" %}">registrarse</a></li>
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url "logout" %}">Cerrar sesion</a></li> <p> Hola {{ user.username }}</p>
+                                <img src="{{ imagen }}" alt="">
+                                {% else %}
+                                
+                                <li><a href="{% url "login" %}">Iniciar sesion</a></li>
+                                {% endif %}
+                               
                                 
                             </ul>
                         </div>
@@ -65,7 +75,7 @@
                             <div class="col-md-12">
                                 <div class="single-post-big">
                                     <div class="big-image">
-                                        <img src="{% static "App_gym/img/gym1.png" %}" alt="">
+                                        <img src="{% static "App_gym/img/blog-2.jpg" %}" alt="">
                                     </div>
                                     <div class="big-text">
                                         <h3>{% block cambia %} Bienvenido a tu Gimnasio {% endblock %}</h3>

@@ -2,34 +2,48 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 from App_gym.forms import *
+from django.contrib.auth.decorators import login_required
+from App_logueo.models import Avatar
 
 # Create your views here.
+@login_required
 def profesor(request):
     profesor1=Profesor(nombre="Federico" , area="musculacion" , email="fede@profe.com")
     profesor1.save()
-    cadena="profe nuevo: "+ profesor1.nombre + "especializado en " +profesor1.area + "contactalo al" + profesor1.email
+    cadena="profe nuevo: " + profesor1.nombre + "" +profesor1.area + "" + profesor1.email
     return HttpResponse(cadena)
 
-
+@login_required
 def gimnasio(request):
     gym1=Gimnasio(nombre="onix" , direccion="espora 355" , email="onix@gym.com")
     gym1.save()
     cadena="gimnasio nuevo:"+ gym1.nombre +""+gym1.direccion+""+ gym1.email
     return HttpResponse(cadena)
 
-
+@login_required
 def inicio(request):
-    return render(request, "App_gym/inicio.html")
+    lista=Avatar.objects.filter(user=request.user)
+    if len (lista)!=0:
+        imagen=lista[0].imagen.url
+    else:
+        imagen=None
 
+
+    return render(request, "App_gym/inicio.html", {"imagen":imagen})
+
+
+
+
+@login_required
 def gimnasio(request):
     return render(request , "App_gym/gimnasio.html")
-
+@login_required
 def profesores(request):
     return render(request,"App_gym/profesores.html")
 
 
 
-
+@login_required
 def gimnasioform(request):
     if request.method=="POST":
         form=GimnasioForm(request.POST)
@@ -48,7 +62,7 @@ def gimnasioform(request):
     return render(request, "App_gym/gimnasioform.html", {"form":formulario})
 
 
-
+@login_required
 def profeform(request):
     if request.method=="POST":
         form=ProfesorForm(request.POST)
@@ -68,25 +82,25 @@ def profeform(request):
 
 
 
-
+@login_required
 def leergim(request):
     gimnasio=Gimnasio.objects.all()
     return render(request , "App_gym/leergim.html", {"gimnasio": gimnasio})
 
-
+@login_required
 def leerprofesores(request):
     profe=Profesor.objects.all()
     return render(request ,"App_gym/leerprofesores.html" ,{"profe": profe} )
 
 
-
+@login_required
 def buscargimnasio(request):
     return render(request, "App_gym/buscargimnasio.html")
 
-
+@login_required
 def buscarprofesor(request):
     return render(request, "App_gym/buscarprofesor.html")
-
+@login_required
 def buscar(request):
     if request.GET["nombre"]:
         nombre=request.GET["nombre"]
@@ -96,7 +110,7 @@ def buscar(request):
     else:
         return render(request ,"App_gym/buscargimnasio.html", {"mensaje":"gimnasio no encontrado"})
 
-
+@login_required
 def buscar1(request):
     if request.GET["area"]:
         area=request.GET["area"]
@@ -106,14 +120,14 @@ def buscar1(request):
     else:
         return render(request ,"App_gym/buscarprofesor.html", {"mensaje":"profesor no encontrado"})
 
-
+@login_required
 def eliminarProfesor(request, id):
     profe=Profesor.objects.get(id=id)
     profe.delete()
     profe=Profesor.objects.all()
     return render( request ,"App_gym/leerprofesores.html", {"profe":profe})
 
-
+@login_required
 def eliminarGim(request, id):
     gim=Gimnasio.objects.get(id=id)
     gim.delete()
@@ -121,7 +135,7 @@ def eliminarGim(request, id):
     return render(request, "App_gym/leergim.html", {"gim":gim})
 
 
-
+@login_required
 def editarProfesor(request,id):
     profesor=Profesor.objects.get(id=id)
     if request.method=="POST":
@@ -131,10 +145,33 @@ def editarProfesor(request,id):
             profesor.nombre=informacion["nombre"]
             profesor.area=informacion["area"]
             profesor.email=informacion["emal"]
+            profesor.save()
+            profesor=Profesor.objects.all()
             return render(request,"App_gym/leerprofesores.html", {"mensaje":"profesor editado correctamente"})
     else:
-        formulario= profeform(initial={"nombre":profesor.nombre , "area":profesor.area , "email": profesor.email})
-    return render (request ,"App_gym/editarProfesor.html", {"form":formulario , "profesor":profesor})
+        formu=ProfesorForm (initial={"nombre":profesor.nombre , "area":profesor.area , "email": profesor.email})
+       
+
+    return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
+
+
+def editarGym(request,id):
+    gimnasio=Gimnasio.objects.get(id=id)
+    if request.method=="POST":
+        form=gimnasioform(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            gimnasio.nombre=informacion["nombre"]
+            gimnasio.direccion=informacion["direccion"]
+            gimnasio.email=informacion["emal"]
+            gimnasio.save()
+            gimnasio=Gimnasio.objects.all()
+            return render(request,"App_gym/leergim.html", {"mensaje":"Gimnasio editado correctamente"})
+    else:
+        formu=GimnasioForm (initial={"nombre":gimnasio.nombre , "direccion":gimnasio.direccion , "email": gimnasio.email})
+       
+
+    return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
                 
 
 

@@ -1,0 +1,52 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5">Editor de Usuario {{ nombreusuario }}</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+
+<form action="{% url "editarPerfil"  %}" method="POST"> {% csrf_token %}
+
+    <table>
+
+    {{ form.as_table }}
+
+    </table> 
+    
+    <input type="submit" value="Modificar Usuario">
+
+</form>
+
+    {{ mensaje }}
+       
+{% endblock %}
+
+
+{% block cambia %} 
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@ class Profesor(models.Model):
     email=models.EmailField(max_length=50)
 
     def __str__(self):
-        return self.nombre + "especializado en " + self.area + "podes contactarlo al " +self.email
+        return self.nombre + ""+ self.area + "" + self.email
 
 
 class Gimnasio(models.Model):
