@@ -1,0 +1,47 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Editar Gimnasio {{ profesor }}</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block cambia %} 
+
+
+
+<h1>Formulario de edicion</h1>
+
+<form action="{% url "editarProfesor" gimnasio.id %}" method="POST"> {% csrf_token %}
+
+    {{ form.as_table }}
+    
+    <input type="submit" value="editar gimnasio">
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+
+
+

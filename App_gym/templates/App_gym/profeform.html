@@ -8,19 +8,20 @@
 
 {% endblock %}
 
-{% block cambia %} Conoce nuestros Profesores {% endblock %}
+{% block cambia %} 
 
-{% block contenido_cambia %}
-
-<form action="{% url "profeform" %}" method="POST"> {% csrf_token %}
-
-    {{ form.as_table }}
+    <h1>Añadir Profesor</h1>
+    
+    <li>
+    <form action="{% url "profeform" %}" method="POST"> {% csrf_token %}
+        
+        {{ form.as_table }}
+    </li>
     
     <input type="submit" value="Añadir Profesor">
     
-    
     {% endblock %}
-
+    {% block img %}<img src="{% static "App_gym/img/about.jpg" %}" alt="">{% endblock %}
 
 
 

@@ -3,13 +3,13 @@
 {% load static %}  
 
 {% block titulo %}
-<h1 class="mb-5"> formulario de ingreso</h1>
+
 
 
 {% endblock %}
 
-{% block contenido_cambia %}
-
+{% block cambia %}
+<h1 class="mb-5"> formulario de ingreso</h1>
 
 <form action="{% url "login"  %}" method="POST"> {% csrf_token %}
 
@@ -28,7 +28,6 @@
 {% endblock %}
 
 
-{% block cambia %} 
 
 
 
@@ -39,7 +38,7 @@
 
 
 
-{% endblock %}
+
 
     
 

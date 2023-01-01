@@ -17,6 +17,8 @@ urlpatterns=[
     path("eliminarProfesor/<id>", eliminarProfesor , name="eliminarProfesor"),
     path("eliminarGim/<id>", eliminarGim, name="eliminarGim"),
     path("editarProfesor/<id>", editarProfesor , name="editarProfesor"),
+    path("editargimnasio/<id>", editarGimnasio , name="editargimnasio"),
+    path("nutricion/", nutricion , name="nutricion"),
 
 
 

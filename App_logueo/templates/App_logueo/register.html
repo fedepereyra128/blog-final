@@ -3,12 +3,14 @@
 {% load static %}  
 
 {% block titulo %}
-<h1 class="mb-5"> formulario de registro</h1>
+<h1 class="mb-5"></h1>
 
 
 {% endblock %}
 
-{% block contenido_cambia %}
+{% block cambia %}
+
+<h1> formulario de registro</h1>
 
 
 <form action="{% url "register"  %}" method="POST"> {% csrf_token %}
@@ -28,20 +30,7 @@
 {% endblock %}
 
 
-{% block cambia %} 
 
-
-
-
-
-
-
-
-
-
-{% endblock %}
-
-    
 
 
 

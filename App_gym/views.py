@@ -155,7 +155,7 @@ def editarProfesor(request,id):
     return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
 
 
-def editarGym(request,id):
+def editarGimnasio(request,id):
     gimnasio=Gimnasio.objects.get(id=id)
     if request.method=="POST":
         form=gimnasioform(request.POST)
@@ -171,7 +171,12 @@ def editarGym(request,id):
         formu=GimnasioForm (initial={"nombre":gimnasio.nombre , "direccion":gimnasio.direccion , "email": gimnasio.email})
        
 
-    return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
+    return render (request ,"App_gym/editargimnasio.html", {"form":formu , "gimnasio":gimnasio})
+
+
+
+def nutricion(request):
+    return render(request,"App_gym/nutricion.html")
                 
 
 

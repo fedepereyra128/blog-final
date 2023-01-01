@@ -8,14 +8,19 @@
 
 {% endblock %}
 
-{% block contenido_cambia %}
-<h2> Listado de Gimnasios</h2>
+{% block cambia %}
+
 <ul>
     {% for gimnasio in gimnasio %}
+
+    <h1>Conoce nuestros Gimnasios</h1>
 
     <li> {{ gimnasio.nombre }} {{ gimnasio.direccion }} {{ gimnasio.email }} </li>
 
     <a class="btn btn-danger" href="{% url 'eliminarGim' gimnasio.id %}" >borrar</a>
+    
+
+    <a class="btn btn-success" href="{% url 'editargimnasio' gimnasio.id %}" >editar</a>
    
 
     {% endfor %}

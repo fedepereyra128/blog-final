@@ -27,6 +27,13 @@
 
 Conoce nuestros Profesores 
 
+<form action="{% url "editarProfesor" profesor.id %}" method="POST"> {% csrf_token %}
+
+    {{ form.as_table }}
+    
+    <input type="submit" value="editar Profesor">
+
+
 
 
 
