@@ -30,5 +30,14 @@ class meta:
 
 class AvatarForm(forms.Form):
     imagen=forms.ImageField(label="imagen")
+
+
+
+class nutriForm(forms.Form):
+    autor=forms.CharField(max_length=30)
+    fecha=forms.DateField()
+    titulo=forms.CharField(max_length=30)
+    imagen=forms.ImageField(label="imagen")
+    cuerpo=forms.CharField(max_length=30)
     
 

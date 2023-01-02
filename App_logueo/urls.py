@@ -7,6 +7,7 @@ urlpatterns=[
     path("register/", register, name="register"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("editarPerfil/", editarPerfil, name="editarPerfil"),
+    path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
 
 
 

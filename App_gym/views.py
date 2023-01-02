@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from .models import *
 from App_gym.forms import *
 from django.contrib.auth.decorators import login_required
-from App_logueo.models import Avatar
-
+from App_logueo.models import *
+from App_logueo.forms import nutriForm
+from App_logueo.views import obtenerAvatar
 # Create your views here.
 @login_required
 def profesor(request):
@@ -36,7 +37,7 @@ def inicio(request):
 
 @login_required
 def gimnasio(request):
-    return render(request , "App_gym/gimnasio.html")
+    return render(request , "App_gym/gimnasio.html" , {"imagen":obtenerAvatar(request)})
 @login_required
 def profesores(request):
     return render(request,"App_gym/profesores.html")
@@ -53,13 +54,14 @@ def gimnasioform(request):
             nombre1=informacion["nombre"] 
             direccion1=informacion["direccion"]
             email1=informacion["email"]
+            
             gimnasio1=Gimnasio(nombre=nombre1 ,direccion=str(direccion1) , email=email1)
             gimnasio1.save()
             return render(request, "App_gym/inicio.html")
 
     else:
             formulario=GimnasioForm()
-    return render(request, "App_gym/gimnasioform.html", {"form":formulario})
+    return render(request, "App_gym/gimnasioform.html", {"form":formulario , "imagen":obtenerAvatar(request)})
 
 
 @login_required
@@ -72,6 +74,7 @@ def profeform(request):
             nombre1=informacion["nombre"] 
             area=informacion["area"]
             email1=informacion["email"]
+            
             profe1=Profesor(nombre=nombre1 ,area=area , email=email1)
             profe1.save()
             return render(request, "App_gym/inicio.html")
@@ -154,7 +157,7 @@ def editarProfesor(request,id):
 
     return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
 
-
+@login_required
 def editarGimnasio(request,id):
     gimnasio=Gimnasio.objects.get(id=id)
     if request.method=="POST":
@@ -174,10 +177,50 @@ def editarGimnasio(request,id):
     return render (request ,"App_gym/editargimnasio.html", {"form":formu , "gimnasio":gimnasio})
 
 
-
+@login_required
 def nutricion(request):
     return render(request,"App_gym/nutricion.html")
-                
+
+def nutriform(request):
+    if request.method=="POST":
+        form=nutriForm(request.POST , files=request.FILES)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            autor=informacion["autor"]
+            fecha=informacion["fecha"]
+            titulo=informacion["titulo"]
+            imagen=imagen=request.FILES["imagen"]
+            cuerpo=informacion["cuerpo"]
+            nutri1=Nutricion(autor=autor, fecha=fecha,titulo=titulo,imagen=imagen,cuerpo=cuerpo)
+            nutri1.save()
+            return render(request,"App_gym/inicio.html")
+    else:
+            form=nutriForm()
+    return render(request, "App_gym/nutriform.html", {"form":form})
+
+
+
+@login_required
+def leernutricion(request):
+    nutricion=Nutricion.objects.all()
+    return render(request ,"App_gym/leerdieta.html" ,{"nutricion": nutricion} )
+
+
+
+@login_required
+def eliminarnutri(request, id):
+    nutri=Nutricion.objects.get(id=id)
+    nutri.delete()
+    nutri=Nutricion.objects.all()
+    return render(request, "App_gym/leerdieta.html", {"nutri":nutri})
+    
+
+
+
+
+
+
+
 
 
 

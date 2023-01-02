@@ -11,3 +11,7 @@ class GimnasioForm(forms.Form):
     nombre=forms.CharField(max_length=30)
     direccion=forms.CharField(max_length=30)
     email=forms.EmailField(max_length=50)
+
+
+
+    

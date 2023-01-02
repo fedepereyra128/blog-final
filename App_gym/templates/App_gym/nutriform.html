@@ -1,0 +1,33 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5">Nutricion</h1>
+
+
+{% endblock %}
+
+{% block cambia %} 
+
+    <h1>Formulario Dietas</h1>
+   
+    
+    <form action="{% url "nutriform" %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        
+        <li>
+            {{ form.as_table }}
+        </li>
+    
+    
+    <input type="submit" value="Añadir Dieta">
+</form>
+    {% endblock %}
+   
+    {% block img %}<img src="{% static "App_gym/img/nutriform.jpg" %}" alt="">{% endblock %}
+
+
+
+
+
+

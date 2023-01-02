@@ -9,22 +9,17 @@
 {% endblock %}
 
 {% block cambia %}
-
+<ul>
     <h1 class="mb-5"> Añadir Gimnasios</h1>
-
-<form action="{% url "gimnasioform" %}" method="POST"> {% csrf_token %}
     <li>
-    {{ form.as_table }}
-
+<form action="{% url "gimnasioform" %}" method="POST"> {% csrf_token %}
+    
+        {{ form.as_table }}
+    </li>
     <input type="submit" value="cargar gimnasio">
     
-</li>
+</ul>
 </form>
 
-
-
-
-
-
-
 {% endblock %}
+{% block img %}<img src="{% static "App_gym/img/gim2.jpg" %}" alt="">{% endblock %}

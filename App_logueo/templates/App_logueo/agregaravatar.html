@@ -1,0 +1,49 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5">Agregar avatar</h1>
+
+
+{% endblock %}
+
+{% block contenido_cambia %}
+
+
+       
+{% endblock %}
+
+
+{% block cambia %} 
+
+<h1 class="mb-5">Agregar avatar de {{ usuario.username }}</h1>
+
+<form action="{% url "agregarAvatar"  %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    <table>
+
+    {{ formulario.as_table }}
+
+    </table> 
+    
+    <input type="submit" value="Agregar Avatar">
+
+</form>
+
+
+{{ mensaje }}
+
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+
+
+

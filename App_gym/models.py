@@ -14,8 +14,21 @@ class Gimnasio(models.Model):
     nombre=models.CharField(max_length=30)
     direccion=models.CharField(max_length=30)
     email=models.EmailField(max_length=50)
-
+    
+    
     def __str__(self):
         return self.nombre+""+str(self.direccion)+""+self.email
+
+
+
+class Nutricion(models.Model):
+    autor=models.CharField(max_length=60)
+    fecha=models.DateField()
+    titulo=models.CharField(max_length=30)
+    imagen=models.ImageField(upload_to="media", null=True)
+    cuerpo=models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.autor+""+self.titulo+""+self.cuerpo+""+self.cuerpo
 
 

@@ -1,0 +1,41 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Nutricion</h1>
+
+
+{% endblock %}
+
+{% block cambia %}
+       
+<ul>
+    {% for nutricion in nutricion %} 
+    <h1>dietas</h1>
+
+    <li>{{ nutricion.autor }} {{ nutricion.titulo }} {{ nutricion.cuerpo }} {{ nutricon.fecha }} </li>
+    <img src="{{ nutricion.imagen.url }}" class="img-fluid">
+    <a class="btn btn-danger" href="{% url 'eliminarnutri' nutricion.id %}" >borrar</a>
+
+
+   
+
+    {% endfor %}
+
+    
+
+</ul>
+
+
+     
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block img %}<img src="{% static "App_gym/img/nutriform.jpg" %}" alt="">{% endblock %} 

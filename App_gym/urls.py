@@ -19,6 +19,9 @@ urlpatterns=[
     path("editarProfesor/<id>", editarProfesor , name="editarProfesor"),
     path("editargimnasio/<id>", editarGimnasio , name="editargimnasio"),
     path("nutricion/", nutricion , name="nutricion"),
+    path("nutriform/", nutriform , name="nutriform"),
+    path("leernutricion/", leernutricion, name="leernutricion"),
+    path("eliminarnutri/<id>", eliminarnutri , name="eliminarnutri"),
 
 
 
