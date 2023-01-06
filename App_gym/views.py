@@ -24,11 +24,10 @@ def gimnasio(request):
 @login_required
 def inicio(request):
     lista=Avatar.objects.filter(user=request.user)
-    if len (lista)!=0:
+    if len(lista) != 0:
         imagen=lista[0].imagen.url
     else:
         imagen=None
-
 
     return render(request, "App_gym/inicio.html", {"imagen":imagen})
 
@@ -37,7 +36,7 @@ def inicio(request):
 
 @login_required
 def gimnasio(request):
-    return render(request , "App_gym/gimnasio.html" , {"imagen":obtenerAvatar(request)})
+    return render(request , "App_gym/gimnasio.html" )
 @login_required
 def profesores(request):
     return render(request,"App_gym/profesores.html")
@@ -61,7 +60,7 @@ def gimnasioform(request):
 
     else:
             formulario=GimnasioForm()
-    return render(request, "App_gym/gimnasioform.html", {"form":formulario , "imagen":obtenerAvatar(request)})
+    return render(request, "App_gym/gimnasioform.html", {"form":formulario})
 
 
 @login_required
@@ -142,12 +141,12 @@ def eliminarGim(request, id):
 def editarProfesor(request,id):
     profesor=Profesor.objects.get(id=id)
     if request.method=="POST":
-        form=profeform(request.POST)
+        form=ProfesorForm(request.POST)
         if form.is_valid():
             informacion=form.cleaned_data
             profesor.nombre=informacion["nombre"]
             profesor.area=informacion["area"]
-            profesor.email=informacion["emal"]
+            profesor.email=informacion["email"]
             profesor.save()
             profesor=Profesor.objects.all()
             return render(request,"App_gym/leerprofesores.html", {"mensaje":"profesor editado correctamente"})
@@ -161,12 +160,12 @@ def editarProfesor(request,id):
 def editarGimnasio(request,id):
     gimnasio=Gimnasio.objects.get(id=id)
     if request.method=="POST":
-        form=gimnasioform(request.POST)
+        form=GimnasioForm(request.POST)
         if form.is_valid():
             informacion=form.cleaned_data
             gimnasio.nombre=informacion["nombre"]
             gimnasio.direccion=informacion["direccion"]
-            gimnasio.email=informacion["emal"]
+            gimnasio.email=informacion["email"]
             gimnasio.save()
             gimnasio=Gimnasio.objects.all()
             return render(request,"App_gym/leergim.html", {"mensaje":"Gimnasio editado correctamente"})
@@ -181,6 +180,7 @@ def editarGimnasio(request,id):
 def nutricion(request):
     return render(request,"App_gym/nutricion.html")
 
+@login_required
 def nutriform(request):
     if request.method=="POST":
         form=nutriForm(request.POST , files=request.FILES)
@@ -212,8 +212,27 @@ def eliminarnutri(request, id):
     nutri=Nutricion.objects.get(id=id)
     nutri.delete()
     nutri=Nutricion.objects.all()
-    return render(request, "App_gym/leerdieta.html", {"nutri":nutri})
+    return render(request, "App_gym/nutricion.html", {"nutri":nutri})
     
+
+
+def editarnutri(request, id):
+    nutricion=Nutricion.objects.get(id=id)
+    if request.method =="POST":
+        form=nutriForm(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            nutricion.autor=informacion["autor"]
+            nutricion.fecha=informacion["fecha"]
+            nutricion.titulo=informacion["titulo"]
+            nutricion.imagen=informacion["imagen"]
+            nutricion.cuerpo=informacion["cuerpo"]
+            nutricion.save()
+            nutricion=Nutricion.objects.all()
+            return render(request, "App_gym/leerdieta.html",{"mensaje":"Dieta editada correctamente", "nutricion":nutricion})
+    else:
+        formulario=nutriForm(initial={"autor":nutricion.autor, "fecha":nutricion.fecha, "titulo":nutricion.titulo, "imagen":nutricion.imagen , "cuerpo":nutricion.cuerpo})
+    return render (request,"App_gym/editarnutri.html", {"form":formulario , "nutricion":nutricion})
 
 
 

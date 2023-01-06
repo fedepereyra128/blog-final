@@ -22,8 +22,8 @@ urlpatterns=[
     path("nutriform/", nutriform , name="nutriform"),
     path("leernutricion/", leernutricion, name="leernutricion"),
     path("eliminarnutri/<id>", eliminarnutri , name="eliminarnutri"),
-
-
+    path("editarnutri/<id>", editarnutri, name="editarnutri"),
+    
 
 
 

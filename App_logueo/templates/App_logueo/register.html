@@ -13,7 +13,7 @@
 <h1> formulario de registro</h1>
 
 
-<form action="{% url "register"  %}" method="POST"> {% csrf_token %}
+    <form action="{% url "register"  %}" method="POST"> {% csrf_token %}
 
     <table>
 
@@ -22,10 +22,13 @@
     </table> 
     
     <input type="submit" value="Crear Usuario">
+    
 
-</form>
+    </form>
+    <a class="btn btn-success" href="{% url 'login'%}" >login</a>
 
     {{ mensaje }}
+
        
 {% endblock %}
 

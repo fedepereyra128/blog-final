@@ -17,6 +17,8 @@
     <li>{{ nutricion.autor }} {{ nutricion.titulo }} {{ nutricion.cuerpo }} {{ nutricon.fecha }} </li>
     <img src="{{ nutricion.imagen.url }}" class="img-fluid">
     <a class="btn btn-danger" href="{% url 'eliminarnutri' nutricion.id %}" >borrar</a>
+    <a class="btn btn-success" href="{% url 'editarnutri' nutricion.id %}" >Editar</a>
+    
 
 
    

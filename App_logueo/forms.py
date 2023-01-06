@@ -38,6 +38,6 @@ class nutriForm(forms.Form):
     fecha=forms.DateField()
     titulo=forms.CharField(max_length=30)
     imagen=forms.ImageField(label="imagen")
-    cuerpo=forms.CharField(max_length=30)
+    cuerpo=forms.CharField(max_length=500)
     
 

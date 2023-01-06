@@ -3,15 +3,17 @@
 {% load static %}  
 
 {% block titulo %}
-
+<h1 class="mb-5"></h1>
 
 
 {% endblock %}
 
 {% block cambia %}
-<h1 class="mb-5"> formulario de ingreso</h1>
 
-<form action="{% url "login"  %}" method="POST"> {% csrf_token %}
+<h1> formulario de Ingreso</h1>
+
+
+    <form action="{% url "login"  %}" method="POST"> {% csrf_token %}
 
     <table>
 
@@ -19,28 +21,19 @@
 
     </table> 
     
-    <input type="submit" value="ingresar">
+    <input type="submit" value="iniciar">
+    
 
-</form>
+    </form>
+    
 
     {{ mensaje }}
+
        
 {% endblock %}
 
+{% block parrafo %} ingresa tu usuario y contraseña para poder visitar nuetra pagina!{% endblock %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 
 

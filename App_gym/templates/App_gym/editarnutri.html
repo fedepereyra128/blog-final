@@ -3,7 +3,7 @@
 {% load static %}  
 
 {% block titulo %}
-<h1 class="mb-5"> Editar Gimnasio {{ profesor }}</h1>
+<h1 class="mb-5"> Editar Dieta</h1>
 
 
 {% endblock %}
@@ -23,15 +23,15 @@
 
 <h1>Formulario de edicion</h1>
 
-<form action="{% url "editargimnasio" gimnasio.id %}" method="POST"> {% csrf_token %}
+<form action="{% url "editarnutri" nutricion.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
     {{ form.as_table }}
     
-    <input type="submit" value="editar gimnasio">
+    <input type="submit" value="editar dieta">
 
 
 
-
+</form>
 
 
 {% endblock %}

@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from App_logueo.forms import RegistroUsuarioForm , UserEditForm ,AvatarForm
 from django.contrib.auth.decorators import login_required
 from .models import Avatar
+from App_gym.models import Nutricion
+from .forms import *
 
 # Create your views here.
 
@@ -14,18 +16,24 @@ def login_request(request):
         if form.is_valid():
             usu=form.cleaned_data.get("username")
             clave=form.cleaned_data.get("password")
-            usuario=authenticate(username=usu , password=clave)
+
+            usuario=authenticate(username=usu, password=clave)
             if usuario is not None:
                 login(request, usuario)
-                return render(request , "App_gym/inicio.html", {"mensaje":"binevenido"})
+                return render (request, "App_gym/inicio.html", {"mensaje":f"bienvenido {usuario}"})
             else:
-                return render(request, "App_logueo/login.html" , {"mensaje":"usuario o contraseña incorrecto", "form": form})
+                return render(request, "App_logeo/login.html", {"mensaje": "usuario o contraseña incorrecta"})
         else:
-            return render(request, "App_logueo/login.html" , {"mensaje":"usuario o contraseña incorrecto", "form": form})
-    else:
-        form=AuthenticationForm()
-        return render(request, "App_logueo/login.html",{"form": form})
+            return render (request, "App_logueo/login.html", {"mensaje": "ususario o conrtaseña incorrecta"})
 
+
+        
+    else:
+        form= AuthenticationForm()
+    return render(request, "App_logueo/login.html", {"form":form})
+
+
+    
 
 
 def register(request):
@@ -42,7 +50,7 @@ def register(request):
         return render (request, "App_logueo/register.html", {"form":form})
 
 
-@login_required
+
 def editarPerfil(request):
     usuario=request.user
     if request.method=="POST":
@@ -88,8 +96,9 @@ def obtenerAvatar(request):
     if len (lista)!= 0:
         imagen=lista[0].imagen.url
     else:
-        imagen="/media/Avatares/avatar1.jpg"
+        imagen="/media/Avatares/avatardefecto.png"
         return imagen
 
 
-        
+
+

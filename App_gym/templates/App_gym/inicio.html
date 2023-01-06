@@ -40,10 +40,10 @@
                                 <li><a href="#">Acerca de mi</a></li>
                                 
                                 {% if user.is_authenticated %}
-                                <li><a href="{% url "logout" %}">Cerrar sesion</a></li> 
+                                <li><a href="{% url "logout" %}">Cerrar sesion</a></li>
+                                <li><a href="{% url "editarPerfil" %}">Editar Perfil</a></li> 
                                 <img src="{{ imagen }}" alt="">
                                 {% else %}
-                                
                                 <li><a href="{% url "login" %}">Iniciar sesion</a></li>
                                 {% endif %}
                                
@@ -54,9 +54,7 @@
                 </div>
             </div>
         </header>
-        {% block form %}
-
-        {% endblock %}
+       
         <section class="bg-text-area">
             <div class="container">
                 <div class="row">
@@ -81,7 +79,7 @@
                                         {% block cambia %} 
                                         <h1>Bienvenido a nuestra pagina </h1>
                                         
-                                                
+                                        {{ mensaje }}      
                                         
                                         
                                         
@@ -89,8 +87,8 @@
                                         {% endblock %}
                                             
                                         {% block parrafo %}<p>Ingresa para poder observar todas nuestras sedes y nuestro grupo calificado de Profesores</p>{% endblock %}
-                                        <h4><span class="date">1 de enero del 2023</span><span class="author">Postado por: <span class="author-name">Federico Pereyra</span></span>
-                                        </h4>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -139,49 +137,8 @@
                 </ul>
 -->
 
-                <div class="nav-links">
-                    <span class="page-numbers current">1</span>
-                    <a class="page-numbers" href="#">2</a>
-                    <a class="page-numbers" href="#">3</a>
-                    <a class="page-numbers" href="#">4</a>
-                    <a class="page-numbers" href="#">5</a>
-                    <a class="page-numbers" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="footer-bg">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <div class="footer-menu">
-                                        <ul>
-                                            <li class="active"><a href="#">Home</a></li>
-                                            <li><a href="#">lifestyle</a></li>
-                                            <li><a href="#">Food</a></li>
-                                            <li><a href="#">Nature</a></li>
-                                            <li><a href="#">photography</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="footer-icon">
-                                        <p><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></p>
-                                    </div>
-                                </div>
-                            </div> .
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/active.js"></script>
+                
+         
 </body>
 
 </html>
