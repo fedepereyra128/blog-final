@@ -37,12 +37,12 @@
                             <ul>
                                 <p> Hola {{ user.username }}
                                 <li><a href="{% url "register" %}">registrarse</a></li>
-                                <li><a href="#">Acerca de mi</a></li>
+                                <li><a href="{% url "aboutme" %}">Acerca de mi</a></li>
                                 
                                 {% if user.is_authenticated %}
                                 <li><a href="{% url "logout" %}">Cerrar sesion</a></li>
                                 <li><a href="{% url "editarPerfil" %}">Editar Perfil</a></li> 
-                                <img src="{{ imagen }}" alt="">
+                                
                                 {% else %}
                                 <li><a href="{% url "login" %}">Iniciar sesion</a></li>
                                 {% endif %}
@@ -83,7 +83,7 @@
                                         
                                         
                                         
-                                        
+                                   
                                         {% endblock %}
                                             
                                         {% block parrafo %}<p>Ingresa para poder observar todas nuestras sedes y nuestro grupo calificado de Profesores</p>{% endblock %}
@@ -96,30 +96,27 @@
                                 <div class="single-post">
                                     <img src="{% static "App_gym/img/about.jpg" %}" alt="">
                                     <h3><a href="{% url "profesores" %}">Profesores</a></h3>
-                                    <h4><span>Posteado por: <span class="author-name">Federico Pereyra</span></span>
-                                    </h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <h4><span>1 de enero del 2023</span></h4>
+                                    
+                                    <p>Ingresa para poder observar a todos nuestros profesionales especializados en distintas areas del entrenamiento </p>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="single-post">
                                     <img src="{% static "App_gym/img/gim3.jpg" %}" alt="">
                                     <h3><a href="{% url "gimnasio" %}">Gimnasios</a></h3>
-                                    <h4><span>Posteado por: <span class="author-name">Federico Pereyra</span></span>
-                                    </h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <h4><span>1 de enero del 2023</span></h4>
+                                    
+                                    <p>Ingresa para observar todas nuestras sedes </p>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="single-post">
                                     <img src="{% static "App_gym/img/nutri.jpg" %}" alt="">
                                     <h3><a href="{% url "nutricion" %}">Nutricion Deportiva</a></h3>
-                                    <h4><span>Posteado por: <span class="author-name">Federico Pereyra</span></span>
-                                    </h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed dotempor incididunt ut. labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    <h4><span>1 de enero del 2023</span></h4>
+                                   
+                                    <p>Ingresa para poder observar todas las dietas y menus nutricionales para poder comenzar una vida mucho mas sana </p>
+                                    
                                 </div>
                            
                             </div>

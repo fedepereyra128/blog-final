@@ -3,8 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, authenticate
 from App_logueo.forms import RegistroUsuarioForm , UserEditForm ,AvatarForm
 from django.contrib.auth.decorators import login_required
-from .models import Avatar
-from App_gym.models import Nutricion
+from .models import Avatar, Nutricion
+
 from .forms import *
 
 # Create your views here.
@@ -24,7 +24,7 @@ def login_request(request):
             else:
                 return render(request, "App_logeo/login.html", {"mensaje": "usuario o contraseña incorrecta"})
         else:
-            return render (request, "App_logueo/login.html", {"mensaje": "ususario o conrtaseña incorrecta"})
+            return render (request, "App_logueo/login.html", {"mensaje": "ususario o conrtaseña incorrecta" , "form":form})
 
 
         
@@ -98,7 +98,6 @@ def obtenerAvatar(request):
     else:
         imagen="/media/Avatares/avatardefecto.png"
         return imagen
-
 
 
 

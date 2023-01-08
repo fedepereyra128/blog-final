@@ -3,7 +3,7 @@
 {% load static %}  
 
 {% block titulo %}
-<h1 class="mb-5"> Profesores</h1>
+<h1 class="mb-5">Lista de Profesores</h1>
 
 
 {% endblock %}
@@ -13,7 +13,7 @@
 
 
 {% block cambia %}
-    Conoce a nuestros Profesores
+<h1 class="mb-5">Lista de Profesores</h1>
     
         {% for profe in profe %}
     
@@ -26,9 +26,11 @@
        
     
         {% endfor %}
+
+        {{ mensaje }}
 {% endblock %}
 
-
+{% block parrafo %} {% endblock %}
     
 
 

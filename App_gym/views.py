@@ -31,7 +31,8 @@ def inicio(request):
 
     return render(request, "App_gym/inicio.html", {"imagen":imagen})
 
-
+def aboutme(request):
+    return render(request,"App_gym/aboutme.html")
 
 
 @login_required
@@ -149,9 +150,9 @@ def editarProfesor(request,id):
             profesor.email=informacion["email"]
             profesor.save()
             profesor=Profesor.objects.all()
-            return render(request,"App_gym/leerprofesores.html", {"mensaje":"profesor editado correctamente"})
+            return render(request,"App_gym/leerprofesores.html", {"mensaje":"Profesor editado correctamente"})
     else:
-        formu=ProfesorForm (initial={"nombre":profesor.nombre , "area":profesor.area , "email": profesor.email})
+            formu=ProfesorForm (initial={"nombre":profesor.nombre , "area":profesor.area , "email": profesor.email})
        
 
     return render (request ,"App_gym/editarProfesor.html", {"form":formu , "profesor":profesor})
@@ -213,34 +214,3 @@ def eliminarnutri(request, id):
     nutri.delete()
     nutri=Nutricion.objects.all()
     return render(request, "App_gym/nutricion.html", {"nutri":nutri})
-    
-
-
-def editarnutri(request, id):
-    nutricion=Nutricion.objects.get(id=id)
-    if request.method =="POST":
-        form=nutriForm(request.POST)
-        if form.is_valid():
-            informacion=form.cleaned_data
-            nutricion.autor=informacion["autor"]
-            nutricion.fecha=informacion["fecha"]
-            nutricion.titulo=informacion["titulo"]
-            nutricion.imagen=informacion["imagen"]
-            nutricion.cuerpo=informacion["cuerpo"]
-            nutricion.save()
-            nutricion=Nutricion.objects.all()
-            return render(request, "App_gym/leerdieta.html",{"mensaje":"Dieta editada correctamente", "nutricion":nutricion})
-    else:
-        formulario=nutriForm(initial={"autor":nutricion.autor, "fecha":nutricion.fecha, "titulo":nutricion.titulo, "imagen":nutricion.imagen , "cuerpo":nutricion.cuerpo})
-    return render (request,"App_gym/editarnutri.html", {"form":formulario , "nutricion":nutricion})
-
-
-
-
-
-
-
-
-
-
-

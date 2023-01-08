@@ -14,7 +14,7 @@ urlpatterns=[
     path("buscarprofesor/", buscarprofesor , name="buscarprofesor"),
     path("buscar1/", buscar1 , name="buscar1"),
     path("profesores/", profesores , name="profesores"),
-    path("eliminarProfesor/<id>", eliminarProfesor , name="eliminarProfesor"),
+    path("eliminarProfesor/<id>",eliminarProfesor, name="eliminarProfesor"),
     path("eliminarGim/<id>", eliminarGim, name="eliminarGim"),
     path("editarProfesor/<id>", editarProfesor , name="editarProfesor"),
     path("editargimnasio/<id>", editarGimnasio , name="editargimnasio"),
@@ -22,7 +22,8 @@ urlpatterns=[
     path("nutriform/", nutriform , name="nutriform"),
     path("leernutricion/", leernutricion, name="leernutricion"),
     path("eliminarnutri/<id>", eliminarnutri , name="eliminarnutri"),
-    path("editarnutri/<id>", editarnutri, name="editarnutri"),
+    path("aboutme/",aboutme, name="aboutme")
+    
     
 
 

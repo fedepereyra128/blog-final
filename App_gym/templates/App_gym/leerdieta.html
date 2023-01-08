@@ -12,19 +12,22 @@
        
 <ul>
     {% for nutricion in nutricion %} 
-    <h1>dietas</h1>
+    <h1>Dietas / Menus </h1>
 
-    <li>{{ nutricion.autor }} {{ nutricion.titulo }} {{ nutricion.cuerpo }} {{ nutricon.fecha }} </li>
+    <li>{{ nutricion.autor }}:</li> 
+    <li>{{ nutricion.titulo }}: {{ nutricion.cuerpo }} </li>
     <img src="{{ nutricion.imagen.url }}" class="img-fluid">
+    <li>{{ nutricion.fecha }}</li>
     <a class="btn btn-danger" href="{% url 'eliminarnutri' nutricion.id %}" >borrar</a>
-    <a class="btn btn-success" href="{% url 'editarnutri' nutricion.id %}" >Editar</a>
+    
+    
     
 
 
    
 
     {% endfor %}
-
+    {% block parrafo %} {% endblock %}
     
 
 </ul>

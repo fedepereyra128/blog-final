@@ -9,6 +9,7 @@ urlpatterns=[
     path("editarPerfil/", editarPerfil, name="editarPerfil"),
     path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
     
+    
 
 
 

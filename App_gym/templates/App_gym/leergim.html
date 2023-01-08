@@ -10,13 +10,13 @@
 
 {% block cambia %}
 
-<ul>
+<h1>Conoce nuestros Gimnasios</h1>
     {% for gimnasio in gimnasio %}
 
-    <h1>Conoce nuestros Gimnasios</h1>
+   
 
     <li> {{ gimnasio.nombre }} {{ gimnasio.direccion }} {{ gimnasio.email }} </li>
-
+   
     <a class="btn btn-danger" href="{% url 'eliminarGim' gimnasio.id %}" >borrar</a>
     
 
@@ -24,10 +24,10 @@
    
 
     {% endfor %}
+   
 
 
-
-</ul>
 
 {% endblock %}
 {% block img %}<img src="{% static "App_gym/img/gim2.jpg" %}" alt="">{% endblock %}
+{% block parrafo %} {% endblock %}
