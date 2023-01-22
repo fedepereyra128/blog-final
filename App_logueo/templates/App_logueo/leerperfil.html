@@ -1,0 +1,45 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"></h1>
+
+
+{% endblock %}
+
+{% block cambia %}
+       
+<ul>
+    {% for usuario in usuario %} 
+    <h1>Mi Perfil </h1>
+
+    <li>{{ usuario.nombre }}:</li> 
+    <li>{{ usuario.email }} {{ usuario.descripcion |safe }} </li>
+    <img src="{{ usuario.imagen.url }}" class="img-fluid">
+    <li></li>
+    {% if user.is_authenticated %}
+    <button onclick="location.href='../modificarPerfil'">editar</button>
+    <a class="btn btn-danger" href="{% url 'eliminarperfil'  %}" >borrar</a>
+      {% endif %}
+
+   
+
+    {% endfor %}
+    {% block parrafo %} {% endblock %}
+    
+
+</ul>
+
+
+     
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block img %}<img src="{% static "App_gym/img/fichaje.jpg" %}" alt="">{% endblock %} 

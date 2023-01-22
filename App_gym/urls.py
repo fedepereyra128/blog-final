@@ -22,7 +22,9 @@ urlpatterns=[
     path("nutriform/", nutriform , name="nutriform"),
     path("leernutricion/", leernutricion, name="leernutricion"),
     path("eliminarnutri/<id>", eliminarnutri , name="eliminarnutri"),
-    path("aboutme/",aboutme, name="aboutme")
+    path("aboutme/",aboutme, name="aboutme"),
+    path("editarnutri/<id>", editarnutri, name="editarnutri"),
+    
     
     
 

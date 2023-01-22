@@ -1,0 +1,41 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Modificar Perfil {{ profesor }}</h1>
+
+
+{% endblock %}
+
+
+
+{% block cambia %} 
+
+
+
+<h1>Modificar Perfil</h1>
+
+<form action="{% url "modificarPerfil" %}" method="POST"> {% csrf_token %}
+    {{ form.media}}
+    {{ form.as_p }}
+    
+    <input type="submit" value="editar perfil">
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block img %}<img src="{% static "App_gym/img/fichaje.jpg" %}" alt="">{% endblock %}  
+
+
+
+
+
+
+
+

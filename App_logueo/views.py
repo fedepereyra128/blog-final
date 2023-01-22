@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, authenticate
 from App_logueo.forms import RegistroUsuarioForm , UserEditForm ,AvatarForm
 from django.contrib.auth.decorators import login_required
-from .models import Avatar, Nutricion
+from .models import Avatar, Nutricion, MiPerfil
 
 from .forms import *
 
@@ -101,3 +101,53 @@ def obtenerAvatar(request):
 
 
 
+def Miperfil(request):
+    return render(request, "App_logueo/MiPerfil.html")
+
+@login_required
+def miperfilform(request):
+    
+    if request.method == "POST":
+        form=MiPerfilForm(request.POST, files=request.FILES)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            nombre=informacion["nombre"]
+            descripcion=informacion["descripcion"]
+            email=informacion["email"]
+            imagen=request.FILES["imagen"]
+            usuario=MiPerfil(nombre=nombre, descripcion=descripcion,email=email,imagen=imagen)
+            usuario.save()
+            return render(request,"App_gym/inicio.html")
+    else:
+            form=MiPerfilForm()
+    return render(request, "App_logueo/miperfilform.html", {"form":form})
+
+
+def leerperfil(request):
+    
+    usuario=MiPerfil.objects.all()
+    return render(request, "App_logueo/leerperfil.html",{"usuario":usuario})
+
+@login_required
+def modificarPerfil(request):
+    perfil=request.user
+    if request.method == "POST":
+        form=MiPerfilForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            perfil.nombre=info["nombre"]
+            perfil.descripcion=info["descripcion"]
+            perfil.email=info["email"]
+            perfil.imagen=info["imagen"]
+            
+            perfil.save()
+            return render(request,"App_loguee/leerperfil.html", {"mensaje":"perfil editado correctamente"})
+    else:
+        form=MiPerfilForm(initial={"email":perfil.email})
+        return render(request, "App_logueo/modificarperfil.html",{"form":form})
+
+def eliminarperfil(request):
+    usuario=MiPerfil.objects.get()
+    usuario.delete()
+    usuario=MiPerfil.objects.all()
+    return render(request, "App_logueo/leerperfil.html", {"usuario":usuario})

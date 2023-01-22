@@ -4,7 +4,7 @@ from .models import *
 from App_gym.forms import *
 from django.contrib.auth.decorators import login_required
 from App_logueo.models import *
-from App_logueo.forms import nutriForm
+from App_logueo.forms import *
 from App_logueo.views import obtenerAvatar
 # Create your views here.
 @login_required
@@ -190,9 +190,9 @@ def nutriform(request):
             autor=informacion["autor"]
             fecha=informacion["fecha"]
             titulo=informacion["titulo"]
-            imagen=imagen=request.FILES["imagen"]
+            
             cuerpo=informacion["cuerpo"]
-            nutri1=Nutricion(autor=autor, fecha=fecha,titulo=titulo,imagen=imagen,cuerpo=cuerpo)
+            nutri1=Nutricion(autor=autor, fecha=fecha,titulo=titulo,cuerpo=cuerpo)
             nutri1.save()
             return render(request,"App_gym/inicio.html")
     else:
@@ -214,3 +214,29 @@ def eliminarnutri(request, id):
     nutri.delete()
     nutri=Nutricion.objects.all()
     return render(request, "App_gym/nutricion.html", {"nutri":nutri})
+
+
+
+
+def editarnutri(request,id):
+    nutricion=Nutricion.objects.get(id=id)
+    if request.method == "POST":
+        form=nutriForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            nutricion.autor=info["autor"]
+            nutricion.fecha=info["fecha"]
+            nutricion.titulo=info["titulo"]
+            nutricion.cuerpo=info["cuerpo"]
+            nutricion.save()
+            nutricion=Nutricion.objects.all()
+            return render(request, "App_gym/leerdieta.html",{"mensaje":"dieta editada correctamente"})
+    else:
+        formu=nutriForm(initial={"autor":nutricion.autor, "fecha":nutricion.fecha, "titulo":nutricion.titulo, "cuerpo":nutricion.cuerpo})
+    return render(request, "App_gym/editarnutri.html",{"form":formu, "nutricion":nutricion})
+
+
+
+
+
+

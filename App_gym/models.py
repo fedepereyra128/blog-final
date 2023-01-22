@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 # Create your models here.
 class Profesor(models.Model):
@@ -7,7 +9,7 @@ class Profesor(models.Model):
     email=models.EmailField(max_length=50)
 
     def __str__(self):
-        return self.nombre + ""+ self.area + "" + self.email
+        return self.nombre + ""+ self.area + "" + str(self.email)
 
 
 class Gimnasio(models.Model):
@@ -17,18 +19,4 @@ class Gimnasio(models.Model):
     
     
     def __str__(self):
-        return self.nombre+""+str(self.direccion)+""+self.email
-
-
-
-class Nutricion(models.Model):
-    autor=models.CharField(max_length=60)
-    fecha=models.DateField()
-    titulo=models.CharField(max_length=30)
-    imagen=models.ImageField(upload_to="media", null=True)
-    cuerpo=models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.autor+""+self.titulo+""+self.cuerpo+""+self.cuerpo
-
-
+        return self.nombre +"" +str(self.direccion) +""+str(self.email)

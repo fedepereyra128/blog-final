@@ -8,8 +8,10 @@ urlpatterns=[
     path("logout/", LogoutView.as_view(), name="logout"),
     path("editarPerfil/", editarPerfil, name="editarPerfil"),
     path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
-    
-    
+    path("miperfilform/", miperfilform, name="miperfilform"),
+    path("leerperfil/", leerperfil, name="leerperfil"),
+    path("modificarPerfil/", modificarPerfil, name="modificarPerfil"),
+    path("eliminarperfil/", eliminarperfil, name="eliminarperfil"),
 
 
 

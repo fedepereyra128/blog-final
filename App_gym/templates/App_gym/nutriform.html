@@ -13,14 +13,19 @@
     <h1>Formulario Dietas</h1>
    
     
-    <form action="{% url "nutriform" %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <form action="{% url "nutriform" %}" method="POST" enctype="multipart/form-data">  {% csrf_token %}
+            
+          
         
-        <li>
-            {{ form.as_table }}
-        </li>
+    
+        {{ form.media }}
+            {{ form.as_p }}
+            
+            
     
     
     <input type="submit" value="Añadir Dieta">
+    
 </form>
     {% endblock %}
    

@@ -15,7 +15,7 @@
     <li>
     <form action="{% url "profeform" %}" method="POST"> {% csrf_token %}
         
-        {{ form.as_table }}
+        {{ form.as_p }}
     </li>
     
     <input type="submit" value="Añadir Profesor">

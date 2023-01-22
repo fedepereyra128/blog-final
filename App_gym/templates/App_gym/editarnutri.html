@@ -1,0 +1,41 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"> Editar Menu {{ profesor }}</h1>
+
+
+{% endblock %}
+
+
+
+{% block cambia %} 
+
+
+
+<h1>Editor de dietas</h1>
+
+<form action="{% url "editarnutri" nutricion.id %}" method="POST"> {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    
+    <input type="submit" value="editar nutri">
+
+
+
+
+
+
+
+{% endblock %}
+
+    
+
+
+
+
+
+
+
+

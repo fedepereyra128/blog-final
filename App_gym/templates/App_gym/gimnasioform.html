@@ -14,7 +14,7 @@
 <li>
 <form action="{% url "gimnasioform" %}" method="POST"> {% csrf_token %}
     
-    {{ form.as_table }}
+    {{ form.as_p }}
 </li>
 <input type="submit" value="cargar gimnasio">
     

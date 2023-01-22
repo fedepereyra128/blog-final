@@ -1,0 +1,44 @@
+{% extends "App_gym/inicio.html" %}
+
+{% load static %}  
+
+{% block titulo %}
+<h1 class="mb-5"></h1>
+
+
+{% endblock %}
+
+{% block cambia %}
+
+<h1>Crear Mi Perfil</h1>
+
+
+    <form action="{% url "miperfilform"  %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    <table>
+     {{ form.media}}   
+    {{ form.as_p }}
+
+    </table> 
+    
+    <input type="submit" value="Guardar">
+    
+
+    </form>
+    
+
+    {{ mensaje }}
+
+       
+{% endblock %}
+
+{% block parrafo %} Aqui puedes creat tu perfil de usuario !{% endblock %}
+
+
+{% block img %}<img src="{% static "App_gym/img/fichaje.jpg" %}" alt="">{% endblock %}
+
+
+
+
+
+

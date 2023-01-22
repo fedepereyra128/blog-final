@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import  User
+from ckeditor.fields import RichTextFormField
 
 class RegistroUsuarioForm(UserCreationForm):
     email=forms.EmailField()
@@ -37,7 +38,11 @@ class nutriForm(forms.Form):
     autor=forms.CharField(max_length=30)
     fecha=forms.DateField()
     titulo=forms.CharField(max_length=30)
-    imagen=forms.ImageField(label="imagen")
-    cuerpo=forms.CharField(max_length=500)
     
-
+    cuerpo=RichTextFormField()
+    
+class MiPerfilForm(forms.Form):
+    nombre=forms.CharField(max_length=100)
+    descripcion=RichTextFormField()
+    email=forms.EmailField(max_length=100)
+    imagen=forms.ImageField(label="imagen")

@@ -15,10 +15,11 @@
     <h1>Dietas / Menus </h1>
 
     <li>{{ nutricion.autor }}:</li> 
-    <li>{{ nutricion.titulo }}: {{ nutricion.cuerpo }} </li>
+    <li>{{ nutricion.titulo }}: {{ nutricion.cuerpo |safe }} </li>
     <img src="{{ nutricion.imagen.url }}" class="img-fluid">
     <li>{{ nutricion.fecha }}</li>
     <a class="btn btn-danger" href="{% url 'eliminarnutri' nutricion.id %}" >borrar</a>
+    <a class="btn btn-success" href="{% url 'editarnutri' nutricion.id %}" >editar</a>
     
     
     
@@ -27,6 +28,7 @@
    
 
     {% endfor %}
+    {{ mensaje }}
     {% block parrafo %} {% endblock %}
     
 
